@@ -1,7 +1,7 @@
 import IService from '../interfaces/IService';
 import { ICar, carZodSchema } from '../interfaces/ICar';
 import { IModel } from '../interfaces/IModel';
-import ErrorTypes from '../erros/catalog';
+import { ErrorTypes } from '../errors/catalog';
 
 class FrameService implements IService<ICar> {
   private _frame:IModel<ICar>;
@@ -11,9 +11,14 @@ class FrameService implements IService<ICar> {
 
   public async create(obj:ICar):Promise<ICar> {
     const parsed = carZodSchema.safeParse(obj);
+    console.log(parsed);
+    
     if (!parsed.success) {
+      console.log('passou aqui');
+      
       throw parsed.error;
     }
+    
     return this._frame.create(obj);
   }
 
