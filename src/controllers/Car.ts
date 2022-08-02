@@ -67,7 +67,9 @@ export default class FrameController {
   ) {
     try {
       const result = await this._service.delete(req.params.id);
-      return res.status(201).json(result);
+      if (!result) throw new Error('EntityNotFound');
+
+      return res.status(204).json(result);
     } catch (err) {
       next(err);
     }
