@@ -4,48 +4,45 @@ import { IModel } from '../interfaces/IModel';
 import { ErrorTypes } from '../errors/catalog';
 
 class FrameService implements IService<ICar> {
-  private _frame:IModel<ICar>;
+  private _car:IModel<ICar>;
   constructor(model:IModel<ICar>) {
-    this._frame = model;
+    this._car = model;
   }
 
   public async create(obj:ICar):Promise<ICar> {
     const parsed = carZodSchema.safeParse(obj);
-    console.log(parsed);
     
-    if (!parsed.success) {
-      console.log('passou aqui');
-      
+    if (!parsed.success) {      
       throw parsed.error;
     }
     
-    return this._frame.create(obj);
+    return this._car.create(obj);
   }
 
   public async readOne(_id:string):Promise<ICar> {
-    const frame = await this._frame.readOne(_id);
-    if (!frame) throw new Error(ErrorTypes.EntityNotFound);
-    return frame;
+    const car = await this._car.readOne(_id);
+    if (!car) throw new Error(ErrorTypes.EntityNotFound);
+    return car;
   }
 
   public async read():Promise<ICar[]> {
-    const frame = await this._frame.read();
-    if (!frame) throw new Error(ErrorTypes.EntityNotFound);
-    return frame;
+    const car = await this._car.read();
+    if (!car) throw new Error(ErrorTypes.EntityNotFound);
+    return car;
   }
 
   public async update(_id:string, obj:ICar):Promise<ICar | null> {
     const parsed = carZodSchema.safeParse(obj);
+    
     if (!parsed.success) {
       throw parsed.error;
     }
-    await this.readOne(_id);
-    return this._frame.update(_id, obj);
+    
+    return this._car.update(_id, obj);
   }
 
   public async delete(_id:string):Promise<ICar | null> {
-    await this.readOne(_id);
-    return this._frame.delete(_id);
+    return this._car.delete(_id);
   }
 }
 

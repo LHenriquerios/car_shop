@@ -10,16 +10,7 @@ export default class FrameController {
     res: Response<ICar>,
     next: NextFunction,
   ) {
-    try { /*     const {
-      model,
-      year,
-      color,
-      status,
-      buyValue,
-      doorsQty, 
-      seatsQty,
-    } = req.body;
-    const car = { model, year, color, status, buyValue, doorsQty, seatsQty }; */
+    try {
       const results = await this._service.create(req.body);
       return res.status(201).json(results);
     } catch (err) {
@@ -59,7 +50,10 @@ export default class FrameController {
   ) {
     try {
       const result = await this._service.update(req.params.id, req.body);
-      return res.status(201).json(result);
+      
+      if (!result) throw new Error('EntityNotFound');
+
+      return res.status(200).json(result);
     } catch (err) {
       next(err);
     }
