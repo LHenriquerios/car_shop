@@ -17,26 +17,26 @@ export default class FrameController {
       next(err);
     }
   }
-  public async readOne(
+  public async getById(
     req: Request,
     res: Response<ICar>,
     next: NextFunction,
   ) {
     try {
-      const result = await this._service.readOne(req.params.id);
+      const result = await this._service.getById(req.params.id);
       return res.status(200).json(result);
     } catch (err) {
       next(err);
     }
   }
 
-  public async read(
+  public async getAll(
     req: Request,
     res: Response<ICar[]>,
     next: NextFunction,
   ) {
     try {
-      const result = await this._service.read();
+      const result = await this._service.getAll();
       return res.status(200).json(result);
     } catch (err) {
       next(err);

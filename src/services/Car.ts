@@ -19,14 +19,14 @@ class FrameService implements IService<ICar> {
     return this._car.create(obj);
   }
 
-  public async readOne(_id:string):Promise<ICar> {
-    const car = await this._car.readOne(_id);
+  public async getById(_id:string):Promise<ICar> {
+    const car = await this._car.getById(_id);
     if (!car) throw new Error(ErrorTypes.EntityNotFound);
     return car;
   }
 
-  public async read():Promise<ICar[]> {
-    const car = await this._car.read();
+  public async getAll():Promise<ICar[]> {
+    const car = await this._car.getAll();
     if (!car) throw new Error(ErrorTypes.EntityNotFound);
     return car;
   }

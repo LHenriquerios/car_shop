@@ -27,6 +27,15 @@ const carMock:ICar[] = [
 	}
 ];
 
+const carMockCreate:ICar = {
+    "model": "Ferrari Maranello",
+    "year": 1963,
+    "color": "red",
+    "buyValue": 3500000,
+    "doorsQty": 2,
+    "seatsQty": 2
+};
+
 const carMockWithId:ICar & { _id:string } = {
     "_id": "62ea7068a3cc0327ef894793",
     "model": "Ferrari Maranello",
@@ -44,7 +53,7 @@ const carMockForChange:ICar = {
     "buyValue": 3500,
     "seatsQty": 4,
     "doorsQty": 4
-  };
+};
 
 const carMockForChangeWithId:ICar & { _id:string } = {
     "_id": "62ea735ba3cc0327ef8947a0",
@@ -54,11 +63,22 @@ const carMockForChangeWithId:ICar & { _id:string } = {
     "buyValue": 3500,
     "seatsQty": 4,
     "doorsQty": 4
-  };
+};
+
+const carMockForDelete:ICar = {
+    "model": "Fiat Uno",
+    "year": 2001,
+    "color": "blue",
+    "buyValue": 3500,
+    "seatsQty": 4,
+    "doorsQty": 4
+};
 
 export {
 	carMock,
+    carMockCreate,
 	carMockWithId,
 	carMockForChange,
 	carMockForChangeWithId,
+    carMockForDelete,
 };
