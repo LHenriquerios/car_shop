@@ -74,9 +74,10 @@ describe('Car Service', () => {
 
 	describe('Update car', () => {
         it('successfully changed', async () => {
-			const carsChanged = await carService.update('62ea735ba3cc0327ef8947a0', carMockForChange);
-            
-			expect(carsChanged).to.be.deep.equal(carMockForChangeWithId);
+			const carsChanged = await carService.update('62cf1fc6498565d94eba52cd', carMockForChange);
+			
+
+			expect(carsChanged).to.be.deep.equal(carMockForChange);
 		});
 	});
 
