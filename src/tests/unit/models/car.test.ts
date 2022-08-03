@@ -29,7 +29,7 @@ describe('Car Model', () => {
 
     describe('get all car', () => {
 		it('successfully found all', async () => {
-			const getAll = await carModel.getAll();
+			const getAll = await carModel.read();
 			expect(getAll).to.be.deep.equal(carMock);
 		});
 	});
@@ -44,13 +44,13 @@ describe('Car Model', () => {
 
 	describe('searching a car by id', () => {
 		it('successfully found', async () => {
-			const carFound = await carModel.getById('62cf1fc6498565d94eba52cd');
+			const carFound = await carModel.readOne('62cf1fc6498565d94eba52cd');
 			expect(carFound).to.be.deep.equal(carMockWithId);
 		});
 
 		it('_id not found', async () => {
 			try {
-				await carModel.getById('123ERRADO');
+				await carModel.readOne('123ERRADO');
 			} catch (error: any) {
 				expect(error.message).to.be.eq(ErrorTypes.InvalidMongoId);
 			}

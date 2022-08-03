@@ -22,9 +22,9 @@ describe('Car Controller', () => {
   const next = {} as NextFunction;
 
   before(() => {
-    sinon.stub(carService, 'getAll').resolves(carMock);
+    sinon.stub(carService, 'read').resolves(carMock);
     sinon.stub(carService, 'create').resolves(carMockWithId);
-    sinon.stub(carService, 'getById').resolves(carMockWithId);
+    sinon.stub(carService, 'readOne').resolves(carMockWithId);
     sinon.stub(carService, 'update').resolves(carMockForChangeWithId); //rever
     sinon.stub(carService, 'delete').resolves(carMockForDelete);
 
@@ -68,13 +68,13 @@ describe('Car Controller', () => {
   describe('Update car', () => {
     it('Success', async () => {
       req.params = { id: carMockForChangeWithId._id }
-      req.body = carMockForChange;
+      req.body = carMockForChangeWithId;
       
       
       await carController.update(req, res, next);
   
       expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
-      expect((res.json as sinon.SinonStub).calledWith(carMockForChange)).to.be.true;
+      expect((res.json as sinon.SinonStub).calledWith(carMockForChangeWithId)).to.be.true;
     });
   });
 

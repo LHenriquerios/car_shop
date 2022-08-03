@@ -23,7 +23,7 @@ export default class FrameController {
     next: NextFunction,
   ) {
     try {
-      const result = await this._service.getById(req.params.id);
+      const result = await this._service.readOne(req.params.id);
       return res.status(200).json(result);
     } catch (err) {
       next(err);
@@ -36,7 +36,7 @@ export default class FrameController {
     next: NextFunction,
   ) {
     try {
-      const result = await this._service.getAll();
+      const result = await this._service.read();
       return res.status(200).json(result);
     } catch (err) {
       next(err);
