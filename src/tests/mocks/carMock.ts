@@ -1,7 +1,8 @@
 import { ICar } from "../../interfaces/ICar";
 
-const carMock:ICar[] = [
+const carMock:ICar[] & { _id: string }[] = [
 	{
+		"_id": "62ea7068a3cc0327ef894793",
 		"model": "Ferrari Maranello",
 		"year": 1963,
 		"color": "red",
@@ -10,6 +11,7 @@ const carMock:ICar[] = [
 		"seatsQty": 2
 	},
 	{
+		"_id": "62ea70a3a3cc0327ef894796",
 		"model": "Ferrari Marshmello",
 		"year": 2001,
 		"color": "white",
@@ -18,6 +20,7 @@ const carMock:ICar[] = [
 		"seatsQty": 3
 	},
 	{
+		"_id": "62ea735ba3cc0327ef8947a0",
 		"model": "Fiat Uno",
 		"year": 2001,
 		"color": "blue",
@@ -25,7 +28,7 @@ const carMock:ICar[] = [
 		"doorsQty": 4,
 		"seatsQty": 4
 	}
-];
+]
 
 const carMockCreate:ICar = {
     "model": "Ferrari Maranello",
