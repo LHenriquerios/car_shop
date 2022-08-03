@@ -19,7 +19,7 @@ describe('Car Service', () => {
  
 	before(() => {
 		sinon.stub(carModel, 'create').resolves(carMockWithId);
-		sinon.stub(carModel, 'update').resolves(carMockForChangeWithId);
+		sinon.stub(carModel, 'update').resolves(carMockForChange);
 		sinon.stub(carModel, 'getById')
 			.onCall(0).resolves(carMockWithId) 
 			.onCall(1).resolves(null)
@@ -74,7 +74,7 @@ describe('Car Service', () => {
 
 	describe('Update car', () => {
         it('successfully changed', async () => {
-			const carsChanged = await carService.update('62cf1fc6498565d94eba52cd', carMockForChange);
+			const carsChanged = await carService.update('62ea735ba3cc0327ef8947a0', carMockForChange);
             
 			expect(carsChanged).to.be.deep.equal(carMockForChangeWithId);
 		});
